@@ -1,5 +1,6 @@
 public class Task2 {
     public void luFactor(int[][] matrix){
+        System.out.println("Task 2");
         double[][] L = new double[3][3];
         double[][] U = new double[3][3];
 
@@ -8,14 +9,14 @@ public class Task2 {
         }
 
         for (int k = 0; k < 3; k++) {
-            // Вычисление элементов U
+
             for (int j = k; j < 3; j++) {
                 U[k][j] = matrix[k][j];
                 for (int p = 0; p < k; p++) {
                     U[k][j] -= L[k][p] * U[p][j];
                 }
             }
-            // Вычисление элементов L
+
             for (int i = k + 1; i < 3; i++) {
                 L[i][k] = matrix[i][k];
                 for (int p = 0; p < k; p++) {
@@ -24,7 +25,8 @@ public class Task2 {
                 L[i][k] /= U[k][k];
             }
         }
-        // Вывод матриц L и U
+        System.out.println("Lu factorization");
+
         System.out.println("Matrix L:");
         printMatrix(L);
 
@@ -35,7 +37,7 @@ public class Task2 {
 
 
 
-    private void printMatrix(double[][] matrix) {
+    public static void printMatrix(double[][] matrix) {
         for (double[] row : matrix) {
             for (double value : row) {
                 System.out.printf("%8.3f", value);
