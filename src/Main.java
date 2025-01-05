@@ -25,6 +25,15 @@ public class Main {
                 {-1, 2, -1},
                 {0, -1, 2}
         };
+        //For task5
+        double[][] matrix3 = {
+                {1, Math.pow(2,0.5), 2},
+                {Math.pow(2,0.5), 3, Math.pow(2,0.5)},
+                {2, Math.pow(2,0.5), 1}
+        };
+
+
+
         double[] initialVector = {1,0,0};
         Task2 task2 = new Task2();
         task2.luFactor(matrix);
@@ -34,6 +43,9 @@ public class Main {
 
         Task4 task4 = new Task4();
         task4.findLargestEigenvalue(matrix2,initialVector,100,1e-6);
+
+        Task5 task5 = new Task5();
+        task5.jacobiMethod(matrix3);
 
 
 

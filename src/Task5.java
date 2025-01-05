@@ -12,7 +12,6 @@ public class Task5 {
         return result;
     }
 
-
     public static int[] findMaxOffDiagonal(double[][] matrix) {
         int n = matrix.length;
         int[] maxIndices = new int[2];
@@ -44,13 +43,11 @@ public class Task5 {
             matrix[i][j] = 0.0;
             matrix[j][i] = 0.0;
 
-
             for (int k = 0; k < n; k++) {
                 double tempVec = eigenvectors[k][i];
                 eigenvectors[k][i] = cosTheta * eigenvectors[k][i] - sinTheta * eigenvectors[k][j];
                 eigenvectors[k][j] = sinTheta * tempVec + cosTheta * eigenvectors[k][j];
             }
-
 
             for (int k = 0; k < n; k++) {
                 if (k != i && k != j) {
@@ -66,6 +63,8 @@ public class Task5 {
     }
 
     public static void jacobiMethod(double[][] matrix) {
+        System.out.println();
+        System.out.println("Task 5");
         int n = matrix.length;
         double[][] eigenvectors = new double[n][n];
         for (int i = 0; i < n; i++) {
@@ -82,20 +81,24 @@ public class Task5 {
 
             if (Math.abs(matrix[i][j]) < epsilon) {
                 break;
-
-                rotate(matrix, eigenvectors, i, j);
-                iterations++;
             }
 
-            System.out.println("Собственные значения:");
-            for (int i = 0; i < n; i++) {
-                System.out.println(matrix[i][i]);
-            }
-
-            System.out.println("\nСобственные векторы:");
-            for (int i = 0; i < n; i++) {
-                System.out.println(Arrays.toString(eigenvectors[i]));
-            }
+            rotate(matrix, eigenvectors, i, j);
+            iterations++;
         }
+
+        System.out.println("Eigenvalues:");
+        for (int i = 0; i < n; i++) {
+            System.out.println(matrix[i][i]);
+        }
+
+        System.out.println("\nEigenvectors:");
+        for (int i = 0; i < n; i++) {
+            System.out.println(Arrays.toString(eigenvectors[i]));
+        }
+
+        System.out.println("\nNumber of iterations: " + iterations);
     }
+
+
 }
